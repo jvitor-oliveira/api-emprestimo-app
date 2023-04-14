@@ -52,22 +52,10 @@ export class CadastrarAtualizarClientesComponent {
 
   }
 
-  EdicaoEcadastro() {
-    if(this.cpf) {
-      this.editar();
-    } else {
-      this.cadastrar();
-    }
-  }
-
   cadastrar() {
     const cliente: ICliente = this.clienteForm.value as ICliente;
     this.clientesService.cadastrarClientes(cliente).subscribe(result => {
-        Swal.fire(
-          'Dados corretos',
-          'Cliente foi cadastrado com sucesso',
-          'success'
-        );
+       this.popUpSucesso();
         this.clienteForm.setValue({
           cpf: '',
           nome: '',
@@ -80,37 +68,27 @@ export class CadastrarAtualizarClientesComponent {
           rendimentoMensal: 0
         })
     }, error => {
-        Swal.fire({
-          icon: 'error',
-          title: 'Oops...',
-          text: 'Algo deu errado!'
-        })
-        console.error(error);
+      this.popUpErro();
+
 
     })
+    this.router.navigate(["clientes"])
   }
-
-  editar() {
-    const cliente: ICliente = this.clienteForm.value as ICliente;
-    this.clientesService.editarClientes(this.cpf.toString(), cliente).subscribe(result => {
-        Swal.fire(
-          'Dados corretos',
-          'Edição realizada',
-          'success'
-
-        );
-        this.router.navigate(["clientes"])
-
-
-    }, error => {
-        Swal.fire({
-          icon: 'error',
-          title: 'erro',
-          text: 'Algo deu errado, não foi possível atualizar'
-        })
-        console.error(error);
-    })
+  popUpSucesso () {
+    Swal.fire(
+      'Sucesso',
+      'Ação Realizada',
+      'success'
+    );
   }
-}
+  popUpErro () {
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Algo deu errado!'
+      })
 
 
+
+    }
+  }
