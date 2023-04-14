@@ -1,0 +1,14 @@
+button:hover{
+  cursor: pointer;
+}
+
+input {
+  border-radius: 0;
+  border: 0;
+  border-bottom: 2px solid #cdcdcd;
+}
+
+textarea:focus, input:focus, select:focus {
+  box-shadow: 0 0 0 0;
+  outline: 0;
+}

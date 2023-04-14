@@ -3,50 +3,59 @@
 
 <div class="container">
   <form [formGroup]="clienteForm" (ngSubmit)="cadastrar()">
-    <div class="row  mb-3 g-2">
-      <div class="col-12 row g-2">
-        <div class="col-12 row g-2">
-          <div class="mb-3 col-8 col-md-4">
-            <label for="cpf" class="form-label fw-bold" >CPF</label>
-            <input type="text" [readonly]="cpf ? true : false" class="form-control form-control-lg" id="cpf" formControlName="cpf"  placeholder="000-000.000-00" >
-          </div>
-          <div class="mb-3 col-md-8">
-            <label for="nome" class="form-label fw-medium">Nome</label>
-            <input type="text" class="form-control form-control-lg" id="nome" formControlName="nome">
-          </div>
-        </div>
+    <div class="row mb-1 g-2">
 
-        <div class="mb-3 col-md-4 col-lg-3 col-xl-2">
-          <label for="rendimentoMensal" class="form-label">Rendimento Mensal</label>
-          <input id="rendimentoMensal" type="text" class="form-control" formControlName="rendimentoMensal" />
-        </div>
-        <div class="col-md-4 col-lg-3 g-2">
-          <div class="mb-3">
-            <label for="telefone" class="form-label">Telefone</label>
-            <input type="text" min="0" class="form-control form-control-lg" id="telefone" formControlName="telefone" placeholder="(00) 00000-0000" mask="(00) 00000-0000">
+      <!--Dados do cliente-->
+      <div class="col-6 row d-flex justify-content-center">
+        <div class="mb-1 col-9 row">
+          <div class="col-12 row g-2">
+            <div class="mb-1">
+              <label for="nome" class="form-label fw-normal">Nome</label>
+              <input type="text" class="form-control form-control-lg" data-masked="" data-inputmask="'mask': '99/99/9999'" id="nome" formControlName="nome">
+            </div>
+            <div class="mb-1">
+              <label for="cpf" class="form-label fw-normal">CPF</label>
+              <input type="text" [readonly]="cpf ? true : false" class="form-control form-control-lg" id="cpf"
+                     formControlName="cpf">
+            </div>
+            <div class="mb-1">
+              <label for="telefone" class="form-label fw-normal">Telefone</label>
+              <input type="tel" min="0" class="form-control form-control-lg " id="telefone" formControlName="telefone">
+            </div>
+            <div class="mb-1">
+              <label for="rendimentoMensal" class="form-label fw-normal">Rendimento Mensal</label>
+              <input id="rendimentoMensal" type="text" class="form-control form-control-lg" formControlName="rendimentoMensal"/>
+            </div>
           </div>
         </div>
       </div>
-      <div class="col-12 row g-2" formGroupName="endereco">
-        <div class="mb-3 col-md-7">
-          <label for="rua" class="form-label">Rua</label>
-          <input id="rua" type="text" class="form-control" formControlName="rua" />
+
+
+      <!--Dados do endereco-->
+      <div class="col-6 g-2 row d-flex justify-content-center" formGroupName="endereco">
+        <div class="mb-1 col-9">
+          <div class="col-12 row g-2">
+            <div class="mb-1">
+              <label for="rua" class="form-label fw-normal">Rua</label>
+              <input id="rua" type="text" class="form-control form-control-lg" formControlName="rua" />
+            </div>
+            <div class="mb-1">
+              <label for="numero" class="form-label fw-normal">Número</label>
+              <input type="text" class="form-control form-control-lg " id="numero" formControlName="numero">
+            </div>
+            <div class="mb-1">
+              <label for="cep" class="form-label fw-normal">Cep</label>
+              <input type="text" min="0" class="form-control form-control-lg" id="cep" formControlName="cep">
+            </div>
+          </div>
         </div>
-        <div class="mb-3 col-6 col-md-2">
-          <label for="numero" class="form-label">Numero</label>
-          <input type="text" class="form-control form-control-lg" id="numero" formControlName="numero" mask="separator">
-        </div>
-        <div class="mb-3 col-6 col-md-3">
-          <label for="cep" class="form-label">Cep</label>
-          <input type="text" min="0" class="form-control form-control-lg" id="cep" formControlName="cep" placeholder="00000-000" mask="XXXXX-XXX">
+      </div>
+      <div class="col-12 g-2 row">
+        <div class="col-11 d-flex justify-content-end">
+          <button type="button" routerLink="/clientes" class="btn btn-lg btn-dark me-1">Voltar</button>
+          <button type="submit" [disabled]="clienteForm.invalid" class="btn btn-lg btn-primary">Salvar</button>
         </div>
       </div>
     </div>
-
-    <button type="button" routerLink="/clientes" class="btn btn-lg btn-dark me-2"><i class="fa-solid fa-angles-left"></i>
-      voltar</button>
-    <button type="submit" [disabled]="clienteForm.invalid" class="btn btn-lg btn-success"><i class="fa-solid fa-bookmark"></i>
-      Salvar</button>
   </form>
-
 </div>
