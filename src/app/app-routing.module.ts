@@ -12,8 +12,8 @@ const routes: Routes = [
   { path: 'clientes', component: ClientesComponent },
   { path: 'clientes/cadastrar', component: CadastrarAtualizarClientesComponent },
   { path: 'clientes/:id', component: ClientesComponent },
-  { path: 'clientes/editar/:id', component: CadastrarAtualizarClientesComponent },
-  { path: 'clientes/excluir/:id', component: ExcluirClientesComponent },
+  { path: 'clientes/:id/editar', component: CadastrarAtualizarClientesComponent },
+  { path: 'clientes/:id/excluir', component: ExcluirClientesComponent },
 
 
 
